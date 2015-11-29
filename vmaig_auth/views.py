@@ -69,6 +69,7 @@ class UserControl(View):
 
 
     def logout(self,request):
+        # print 'levywant'
         if not request.user.is_authenticated():
             logger.error(u'[UserControl]用户未登陆')
             raise PermissionDenied

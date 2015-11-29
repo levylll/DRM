@@ -58,9 +58,9 @@ class Category(models.Model):
     create_time = models.DateTimeField(u'创建时间',auto_now_add=True)
 
     class Meta:
-        verbose_name_plural = verbose_name = u'分类'
+        verbose_name_plural = verbose_name = u'类别'
         ordering = ['rank','-create_time']
-        app_label = string_with_title('blog',u"博客管理")
+        app_label = string_with_title('blog',u"内容管理")
 
     
     def __unicode__(self):
@@ -72,13 +72,15 @@ class Category(models.Model):
 
 class Article(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name=u'作者')
-    category = models.ForeignKey(Category,verbose_name=u'分类')
+    category = models.ForeignKey(Category,verbose_name=u'类别')
     title = models.CharField(max_length=100,verbose_name=u'标题')
-    en_title = models.CharField(max_length=100,verbose_name=u'英文标题')
-    img = models.CharField(max_length=200,default='/static/img/article/default.jpg')
+    en_title = models.CharField(max_length=100,verbose_name=u'英文标题',help_text=u'系统内部的唯一标示,非常重要,使用英文或者数字')
+    # img = models.CharField(max_length=200,default='/static/img/article/default.jpg',null=True,blank=True,)
+    # img = models.CharField(max_length=200,default='/static/img/article/default.jpg',null=True,blank=True,)
+    file = models.FileField(upload_to = './upload/',null=True,blank=True)
     tags = models.CharField(max_length=200,null=True,blank=True,verbose_name=u'标签',help_text=u'用逗号分隔')
-    summary = models.TextField(verbose_name=u'摘要')
-    content = models.TextField(verbose_name=u'正文')
+    summary = models.TextField(verbose_name=u'摘要',null=True,blank=True,)
+    content = models.TextField(verbose_name=u'内容',null=True,blank=True,)
     
     view_times = models.IntegerField(default=0)
     zan_times = models.IntegerField(default=0)
@@ -96,9 +98,9 @@ class Article(models.Model):
         return self.tags.split(',')
     
     class Meta:
-        verbose_name_plural = verbose_name = u'文章'
+        verbose_name_plural = verbose_name = u'内容'
         ordering = ['rank','-is_top','-pub_time','-create_time']
-        app_label = string_with_title('blog',u"博客管理")
+        app_label = string_with_title('blog',u"内容管理")
     
     def __unicode__(self):
             return self.title

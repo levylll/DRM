@@ -80,12 +80,12 @@ class MainDashboard(object):
     ]
 
 
-xadmin.site.register(xadmin.views.CommAdminView,GlobalSetting)
+# xadmin.site.register(xadmin.views.CommAdminView,GlobalSetting)
 xadmin.site.register(xadmin.views.website.IndexView, MainDashboard)
 
 xadmin.site.register(Category,CategoryAdmin)
 xadmin.site.register(Article,ArticleAdmin)
-xadmin.site.register(News,NewsAdmin)
-xadmin.site.register(Nav,NavAdmin)
-xadmin.site.register(Column,ColumnAdmin)
-xadmin.site.register(Carousel,CarouselAdmin)
+# xadmin.site.register(News,NewsAdmin)
+# xadmin.site.register(Nav,NavAdmin)
+# xadmin.site.register(Column,ColumnAdmin)
+# xadmin.site.register(Carousel,CarouselAdmin)
