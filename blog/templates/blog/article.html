@@ -6,7 +6,7 @@
         <div id="article-page" class="well">
             <ol class="breadcrumb">
                 <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
-                <li><a href="/category/{{article.category}}/">{{article.category}}</a></li>
+                <li><a>{{article.category}}</a></li>
                 <li class="hidden-xs"><a><span class="glyphicon glyphicon-calendar"></span> {{article.pub_time|date:"Y-m-d"}}</a></li>
                 <li><a>
                     <span class="glyphicon glyphicon-eye-open"></span>
@@ -20,20 +20,37 @@
             <div id="article">
                 <div class="article-title">
                     <h1>{{article.title}}</h1>
+
                 </div>
-                <div class="article-tags">
-                    {% for tag in article.get_tags%}
-                    <a href="/tags/{{tag}}/">
-                        <span class="label label-vmaig-{{forloop.counter}} btn">{{tag}}</span>
-                    </a>
-                    {% endfor %}
-                </div>
+                <!--<div class="article-tags">-->
+                    <!--{% for tag in article.get_tags%}-->
+                    <!--<a href="/tags/{{tag}}/">-->
+                        <!--<span class="label label-vmaig-{{forloop.counter}} btn">{{tag}}</span>-->
+                    <!--</a>-->
+                    <!--{% endfor %}-->
+                <!--</div>-->
+
                 <hr/>
                 <div class="article-content">
                     {% autoescape off%}
                     {{article.content}}
                     {% endautoescape %}
                 </div>
+                                    {% if article.file %}
+                <!--<div>附件</div>-->
+
+                <!--<div class="block span6">-->
+    <!--<p class="block-heading ">进程管理</p>-->
+    <!--<div class="block-body">-->
+       <!--<form action="" method="post">{% csrf_token %}-->
+            <!--<button type="submit" name="s_thread" class="btn btn-primary ">下载文件</button>-->
+            <!--<div class="clearfix"></div>-->
+       <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+                {% endif %}
             </div>
         </div>
 
@@ -44,10 +61,8 @@
 
     <div id="vmaig-side" class="col-md-4 col-lg-3 hidden-xs">
 
-        {% include "./blog/widgets/tags_cloud.html"%}
-        {% include "./blog/widgets/search.html"%}
-        {% include "./blog/widgets/hotest_posts.html"%}
-        {% include "./vmaig_comments/latest_comments.html"%}
+            {% include "./blog/widgets/forum.html"%}
+            {% include "./blog/widgets/links.html"%}
     </div>
 </div>
 {% endblock %}

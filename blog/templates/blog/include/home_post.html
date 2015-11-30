@@ -40,26 +40,26 @@
         </div>
     </div>
     <div class="post-content">
-        <div class="row">
-            <div class="col-sm-4">
-                <figure class="thumbnail">
-                    <a href="/article/{{post.en_title}}.html">
-                        <img src="{{post.img}}"  height="300" alt="">
-                    </a>
-                </figure>
-            </div>
-            <div class="col-sm-8">
+        <div class="row" style="margin-left:15px">
+            <!--<div class="col-sm-4">-->
+                <!--<figure class="thumbnail">-->
+                    <!--<a href="/article/{{post.en_title}}.html">-->
+                        <!--<img src="{{post.img}}"  height="300" alt="">-->
+                    <!--</a>-->
+                <!--</figure>-->
+            <!--</div>-->
+            <!--<div class="col-sm-8">-->
                 <p>
                 {% autoescape off%}
-                {{post.summary|slice:"200" }}
+                {{post.summary|slice:"50" }}
                 {% endautoescape %}
-                {% if post.summary|length > 200 %}
+                {% if post.summary|length > 50 %}
                     ...
                 {% endif %}
                 </p>
                 <a type="button" class="btn btn-vmaig pull-right hidden-xs"  href="/article/{{post.en_title}}.html">阅读全文</a>
 
-            </div>
+            <!--</div>-->
         </div>
     </div>
 </div>

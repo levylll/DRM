@@ -11,13 +11,13 @@
         <ul id="latest-comment-list" class="list-group collapse in">
             {% for comment in latest_comment_list%}
             <li class="list-group-item clearfix">
-            <div class="comment-tx">
-                {% if comment.user.img%}
-                <img src="{{comment.user.img}}" width="40" height="40" alt="">
-                {%else%}
-                <img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40" height="40" alt="">
-                {%endif%}
-            </div>
+            <!--<div class="comment-tx">-->
+                <!--{% if comment.user.img%}-->
+                <!--<img src="{{comment.user.img}}" width="40" height="40" alt="">-->
+                <!--{%else%}-->
+                <!--<img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40" height="40" alt="">-->
+                <!--{%endif%}-->
+            <!--</div>-->
             <div class="comment-info">
                 <div class="comment-username">
                     <a href="#">{{comment.user.username}} 评论:</a>

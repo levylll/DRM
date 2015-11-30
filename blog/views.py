@@ -155,6 +155,430 @@ class AllView(BaseMixin,ListView):
         mydict = {"html":html,"isend":isend}
         return HttpResponse(json.dumps(mydict),content_type="application/json")
 
+class NewjzView(BaseMixin,ListView):
+    template_name = 'blog/newjz.html'
+    context_object_name = 'article_list'
+
+    def get_context_data(self,**kwargs):
+        kwargs['category_list'] = Category.objects.all()
+        kwargs['PAGE_NUM'] = PAGE_NUM
+        return super(NewjzView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        val='最新工作进展'
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by("-pub_time")[0:]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+        # article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        return article_list
+
+    def post(self, request, *args, **kwargs):
+        val='最新工作进展'
+        # val = self.request.POST.get("val","")
+        sort = self.request.POST.get("sort","time")
+        start = self.request.POST.get("start",0)
+        end = self.request.POST.get("end",PAGE_NUM)
+
+        start = int(start)
+        end = int(end)
+
+        if sort == "time":
+            sort = "-pub_time"
+        elif sort == "recommend":
+            sort = "-view_times"
+        else:
+            sort = "-pub_time"
+
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by(sort)[start:end+1]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+
+        isend = len(article_list) != (end-start+1)
+
+        article_list = article_list[0:end-start]
+
+        html = ""
+        for article in article_list:
+            html +=  template.loader.get_template('blog/include/all_post.html').render(template.Context({'post':article}))
+
+        mydict = {"html":html,"isend":isend}
+        return HttpResponse(json.dumps(mydict),content_type="application/json")
+
+class JsbzView(BaseMixin,ListView):
+    template_name = 'blog/jsbz.html'
+    context_object_name = 'article_list'
+
+    def get_context_data(self,**kwargs):
+        kwargs['category_list'] = Category.objects.all()
+        kwargs['PAGE_NUM'] = PAGE_NUM
+        return super(JsbzView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        val='ChinaDRM技术标准'
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by("-pub_time")[0:]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+        # article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        return article_list
+
+    def post(self, request, *args, **kwargs):
+        val='ChinaDRM技术标准'
+        # val = self.request.POST.get("val","")
+        sort = self.request.POST.get("sort","time")
+        start = self.request.POST.get("start",0)
+        end = self.request.POST.get("end",PAGE_NUM)
+
+        start = int(start)
+        end = int(end)
+
+        if sort == "time":
+            sort = "-pub_time"
+        elif sort == "recommend":
+            sort = "-view_times"
+        else:
+            sort = "-pub_time"
+
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by(sort)[start:end+1]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+
+        isend = len(article_list) != (end-start+1)
+
+        article_list = article_list[0:end-start]
+
+        html = ""
+        for article in article_list:
+            html +=  template.loader.get_template('blog/include/all_post.html').render(template.Context({'post':article}))
+
+        mydict = {"html":html,"isend":isend}
+        return HttpResponse(json.dumps(mydict),content_type="application/json")
+
+class JsyqView(BaseMixin,ListView):
+    template_name = 'blog/jsyq.html'
+    context_object_name = 'article_list'
+
+    def get_context_data(self,**kwargs):
+        kwargs['category_list'] = Category.objects.all()
+        kwargs['PAGE_NUM'] = PAGE_NUM
+        return super(JsyqView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        val='ChinaDRM技术要求与测试方法'
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by("-pub_time")[0:]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+        # article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        return article_list
+
+    def post(self, request, *args, **kwargs):
+        val='ChinaDRM技术要求与测试方法'
+        # val = self.request.POST.get("val","")
+        sort = self.request.POST.get("sort","time")
+        start = self.request.POST.get("start",0)
+        end = self.request.POST.get("end",PAGE_NUM)
+
+        start = int(start)
+        end = int(end)
+
+        if sort == "time":
+            sort = "-pub_time"
+        elif sort == "recommend":
+            sort = "-view_times"
+        else:
+            sort = "-pub_time"
+
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by(sort)[start:end+1]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+
+        isend = len(article_list) != (end-start+1)
+
+        article_list = article_list[0:end-start]
+
+        html = ""
+        for article in article_list:
+            html +=  template.loader.get_template('blog/include/all_post.html').render(template.Context({'post':article}))
+
+        mydict = {"html":html,"isend":isend}
+        return HttpResponse(json.dumps(mydict),content_type="application/json")
+
+class BzfhView(BaseMixin,ListView):
+    template_name = 'blog/bzfh.html'
+    context_object_name = 'article_list'
+
+    def get_context_data(self,**kwargs):
+        kwargs['category_list'] = Category.objects.all()
+        kwargs['PAGE_NUM'] = PAGE_NUM
+        return super(BzfhView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        val='ChinaDRM标准符合性测试用例'
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by("-pub_time")[0:]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+        # article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        return article_list
+
+    def post(self, request, *args, **kwargs):
+        val='ChinaDRM标准符合性测试用例'
+        # val = self.request.POST.get("val","")
+        sort = self.request.POST.get("sort","time")
+        start = self.request.POST.get("start",0)
+        end = self.request.POST.get("end",PAGE_NUM)
+
+        start = int(start)
+        end = int(end)
+
+        if sort == "time":
+            sort = "-pub_time"
+        elif sort == "recommend":
+            sort = "-view_times"
+        else:
+            sort = "-pub_time"
+
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by(sort)[start:end+1]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+
+        isend = len(article_list) != (end-start+1)
+
+        article_list = article_list[0:end-start]
+
+        html = ""
+        for article in article_list:
+            html +=  template.loader.get_template('blog/include/all_post.html').render(template.Context({'post':article}))
+
+        mydict = {"html":html,"isend":isend}
+        return HttpResponse(json.dumps(mydict),content_type="application/json")
+
+class XtzcView(BaseMixin,ListView):
+    template_name = 'blog/xtzc.html'
+    context_object_name = 'article_list'
+
+    def get_context_data(self,**kwargs):
+        kwargs['category_list'] = Category.objects.all()
+        kwargs['PAGE_NUM'] = PAGE_NUM
+        return super(XtzcView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        val='ChinaDRM系统自测工具集'
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by("-pub_time")[0:]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+        # article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        return article_list
+
+    def post(self, request, *args, **kwargs):
+        val='ChinaDRM系统自测工具集'
+        # val = self.request.POST.get("val","")
+        sort = self.request.POST.get("sort","time")
+        start = self.request.POST.get("start",0)
+        end = self.request.POST.get("end",PAGE_NUM)
+
+        start = int(start)
+        end = int(end)
+
+        if sort == "time":
+            sort = "-pub_time"
+        elif sort == "recommend":
+            sort = "-view_times"
+        else:
+            sort = "-pub_time"
+
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by(sort)[start:end+1]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+
+        isend = len(article_list) != (end-start+1)
+
+        article_list = article_list[0:end-start]
+
+        html = ""
+        for article in article_list:
+            html +=  template.loader.get_template('blog/include/all_post.html').render(template.Context({'post':article}))
+
+        mydict = {"html":html,"isend":isend}
+        return HttpResponse(json.dumps(mydict),content_type="application/json")
+
+class SpsyView(BaseMixin,ListView):
+    template_name = 'blog/spsy.html'
+    context_object_name = 'article_list'
+
+    def get_context_data(self,**kwargs):
+        kwargs['category_list'] = Category.objects.all()
+        kwargs['PAGE_NUM'] = PAGE_NUM
+        return super(SpsyView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        val='视频水印在线测试工具'
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by("-pub_time")[0:]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+        # article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        return article_list
+
+    def post(self, request, *args, **kwargs):
+        val='视频水印在线测试工具'
+        # val = self.request.POST.get("val","")
+        sort = self.request.POST.get("sort","time")
+        start = self.request.POST.get("start",0)
+        end = self.request.POST.get("end",PAGE_NUM)
+
+        start = int(start)
+        end = int(end)
+
+        if sort == "time":
+            sort = "-pub_time"
+        elif sort == "recommend":
+            sort = "-view_times"
+        else:
+            sort = "-pub_time"
+
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by(sort)[start:end+1]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+
+        isend = len(article_list) != (end-start+1)
+
+        article_list = article_list[0:end-start]
+
+        html = ""
+        for article in article_list:
+            html +=  template.loader.get_template('blog/include/all_post.html').render(template.Context({'post':article}))
+
+        mydict = {"html":html,"isend":isend}
+        return HttpResponse(json.dumps(mydict),content_type="application/json")
+
+class SpzwView(BaseMixin,ListView):
+    template_name = 'blog/spzw.html'
+    context_object_name = 'article_list'
+
+    def get_context_data(self,**kwargs):
+        kwargs['category_list'] = Category.objects.all()
+        kwargs['PAGE_NUM'] = PAGE_NUM
+        return super(SpzwView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        val='视频指纹在线测试工具'
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by("-pub_time")[0:]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+        # article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        return article_list
+
+    def post(self, request, *args, **kwargs):
+        val='视频指纹在线测试工具'
+        # val = self.request.POST.get("val","")
+        sort = self.request.POST.get("sort","time")
+        start = self.request.POST.get("start",0)
+        end = self.request.POST.get("end",PAGE_NUM)
+
+        start = int(start)
+        end = int(end)
+
+        if sort == "time":
+            sort = "-pub_time"
+        elif sort == "recommend":
+            sort = "-view_times"
+        else:
+            sort = "-pub_time"
+
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by(sort)[start:end+1]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+
+        isend = len(article_list) != (end-start+1)
+
+        article_list = article_list[0:end-start]
+
+        html = ""
+        for article in article_list:
+            html +=  template.loader.get_template('blog/include/all_post.html').render(template.Context({'post':article}))
+
+        mydict = {"html":html,"isend":isend}
+        return HttpResponse(json.dumps(mydict),content_type="application/json")
+
+class CspgView(BaseMixin,ListView):
+    template_name = 'blog/cspg.html'
+    context_object_name = 'article_list'
+
+    def get_context_data(self,**kwargs):
+        kwargs['category_list'] = Category.objects.all()
+        kwargs['PAGE_NUM'] = PAGE_NUM
+        return super(CspgView,self).get_context_data(**kwargs)
+
+    def get_queryset(self):
+        val='测试与评估管理'
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by("-pub_time")[0:]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+        # article_list = Article.objects.filter(status=0)[0:PAGE_NUM]
+        return article_list
+
+    def post(self, request, *args, **kwargs):
+        val='测试与评估管理'
+        # val = self.request.POST.get("val","")
+        sort = self.request.POST.get("sort","time")
+        start = self.request.POST.get("start",0)
+        end = self.request.POST.get("end",PAGE_NUM)
+
+        start = int(start)
+        end = int(end)
+
+        if sort == "time":
+            sort = "-pub_time"
+        elif sort == "recommend":
+            sort = "-view_times"
+        else:
+            sort = "-pub_time"
+
+        try:
+            article_list = Category.objects.get(name=val).article_set.filter(status=0).order_by(sort)[start:end+1]
+        except Category.DoesNotExist:
+            logger.error(u'[AllView]未查询到相关信息:[%s]' % val)
+            raise PermissionDenied
+
+        isend = len(article_list) != (end-start+1)
+
+        article_list = article_list[0:end-start]
+
+        html = ""
+        for article in article_list:
+            html +=  template.loader.get_template('blog/include/all_post.html').render(template.Context({'post':article}))
+
+        mydict = {"html":html,"isend":isend}
+        return HttpResponse(json.dumps(mydict),content_type="application/json")
+
 
 class SearchView(BaseMixin,ListView):
     template_name = 'blog/search.html'
@@ -287,3 +711,17 @@ class NewsView(BaseMixin,TemplateView):
         kwargs['active'] = start_day/7  #li中那个显示active
 
         return super(NewsView,self).get_context_data(**kwargs)
+
+
+# def server(request,game_name):
+#     print 'test'
+#     if request.method == 'POST':
+#         if request.POST.has_key('s_thread'):
+#             filename = 'upload/run.py'        #指定要下载的文件路径
+#             wrapper = FileWrapper(file(filename))
+#             response = HttpResponse(wrapper, content_type='text/plain')
+#             response['Content-Length'] = os.path.getsize(filename)
+#             response['Content-Encoding'] = 'utf-8'
+#             response['Content-Disposition'] = 'attachment;filename=%s' % filename
+#             return response
+#     return render(request,'server.html',locals())

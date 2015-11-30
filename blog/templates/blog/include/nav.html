@@ -362,7 +362,7 @@ body {
                     </a>
                 </li>
                 <li>
-                    <a href="/all">
+                    <a href="/newjz">
                         <span class="glyphicon glyphicon-globe"></span>
                         最新工作进展
                     </a>
@@ -374,8 +374,8 @@ body {
                             技术文档
                         </a>
 						<ul>
-						<li><a href="">技术标准</a></li>
-						<li><a href="">技术要求与测试方法</a></li>
+						<li><a href="/jsbz">技术标准</a></li>
+						<li><a href="/jsyq">技术要求与测试方法</a></li>
 						</ul>
                     </li>
                 {% endif%}
@@ -388,11 +388,11 @@ body {
                             测试数据与测试工具
                         </a>
 						<ul>
-						<li><a href="">标准符合性测试用例</a></li>
-						<li><a href="">系统自测工具集</a></li>
+						<li><a href="/bzfh">标准符合性测试用例</a></li>
+						<li><a href="/xtzc">系统自测工具集</a></li>
 					{% if  user.userpermission  < 1 %}
-						<li><a href="">视频水印在线测试工具</a></li>
-						<li><a href="">视频指纹在线测试工具</a></li>
+						<li><a href="/spsy">视频水印在线测试工具</a></li>
+						<li><a href="/spzw">视频指纹在线测试工具</a></li>
 							{% endif%}
 						</ul>
                     </li>
@@ -400,7 +400,7 @@ body {
                 {% endif%}
             {% if  user.is_authenticated %}
                 <li>
-                    <a href="/all">
+                    <a href="/cspg">
                         <span class="glyphicon glyphicon-globe"></span>
                         测试与评估管理
                     </a>

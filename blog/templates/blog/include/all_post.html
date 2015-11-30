@@ -1,39 +1,40 @@
 <div class="all-post clearfix underline">
     <div class="post-title clearfix">
-        <a href="/category/{{post.category}}/">
-            <div class="pre-cat">
-                <div class="pre-catinner btn">
-                    {{post.category}} 
-                </div>
-                <div class="pre-catarrow">
-                </div>
-            </div> 
-        </a>
+        <!--<a href="/category/{{post.category}}/">-->
+            <!--<div class="pre-cat">-->
+                <!--<div class="pre-catinner btn">-->
+                    <!--{{post.category}} -->
+                <!--</div>-->
+                <!--<div class="pre-catarrow">-->
+                <!--</div>-->
+            <!--</div> -->
+        <!--</a>-->
         <h1><a href="/article/{{post.en_title}}.html">{{post.title}}</a></h1>
 
-        <div class="post-tags" style="float:right">
-            {% for tag in post.get_tags%}
-            <a href="/tag/{{tag}}/">
-                <span class="label label-vmaig-{{forloop.counter}} btn">{{tag}}</span>
-            </a>
-            {% endfor %}
-        </div>
+        <!--<div class="post-tags" style="float:right">-->
+            <!--{% for tag in post.get_tags%}-->
+            <!--<a href="/tag/{{tag}}/">-->
+                <!--<span class="label label-vmaig-{{forloop.counter}} btn">{{tag}}</span>-->
+            <!--</a>-->
+            <!--{% endfor %}-->
+        <!--</div>-->
     </div>
     <div class="post-content ">
         <div class="row">
-            <div class="col-sm-4">
-                <figure class="thumbnail">
-                    <a href="/article/{{post.en_title}}.html">
-                        <img src="{{post.img}}"  height="400" alt="">
-                    </a>
-                </figure> 
-            </div>
-            <div class="col-sm-8">
-                <p>
+            <!--<div class="col-sm-4">-->
+                <!--<figure class="thumbnail">-->
+                    <!--<a href="/article/{{post.en_title}}.html">-->
+                        <!--<img src="{{post.img}}"  height="400" alt="">-->
+                    <!--</a>-->
+                <!--</figure> -->
+            <!--</div>-->
+            <!--<div class="col-sm-8">-->
+            <div style="margin-left:20px">
+                <p >
                 {% autoescape off%}
-                {{post.summary|slice:"200" }}
+                {{post.summary|slice:"50" }}
                 {% endautoescape %}
-                {% if post.summary|length > 200 %}
+                {% if post.summary|length > 50 %}
                     ...
                 {% endif %}
                 </p>

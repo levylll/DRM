@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from blog.views import IndexView,ArticleView,AllView,SearchView,ColumnView,UserView,NewsView,TagView,CategoryView
+from blog.views import IndexView,ArticleView,AllView,SearchView,ColumnView,UserView,NewsView,TagView,CategoryView,JsyqView
+from blog.views import NewjzView,JsbzView,BzfhView,XtzcView,SpsyView,SpzwView,CspgView
 from django.views.generic import TemplateView,DetailView
 from blog.models import News
 
@@ -7,6 +8,14 @@ urlpatterns = [
         url(r'^$',IndexView.as_view()),
         url(r'^article/(?P<slug>\w+).html$',ArticleView.as_view()),
         url(r'^all/$',AllView.as_view()),
+        url(r'^newjz/$',NewjzView.as_view()),
+        url(r'^jsbz/$',JsbzView.as_view()),
+        url(r'^jsyq/$',JsyqView.as_view()),
+        url(r'^bzfh/$',BzfhView.as_view()),
+        url(r'^xtzc/$',XtzcView.as_view()),
+        url(r'^spsy/$',SpsyView.as_view()),
+        url(r'^spzw/$',SpzwView.as_view()),
+        url(r'^cspg/$',CspgView.as_view()),
         url(r'^search/$',SearchView.as_view()),
         url(r'^login/$',TemplateView.as_view(template_name="blog/login.html")),
         url(r'^register/$',TemplateView.as_view(template_name="blog/register.html")),

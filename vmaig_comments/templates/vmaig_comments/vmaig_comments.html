@@ -1,12 +1,12 @@
 <div class="well">
     <div class="vmaig-comment">
-        <div class="vmaig-comment-tx">
-            {% if user.img%}
-            <img src="{{user.img}}" width="40"></img>
-            {%else%}
-            <img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40"></img>
-            {%endif%}
-        </div>
+        <!--<div class="vmaig-comment-tx">-->
+            <!--{% if user.img%}-->
+            <!--<img src="{{user.img}}" width="40"></img>-->
+            <!--{%else%}-->
+            <!--<img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40"></img>-->
+            <!--{%endif%}-->
+        <!--</div>-->
         <div class="vmaig-comment-edit clearfix">
             <form id="vmaig-comment-form" method="post" role="form">
                 {% csrf_token %}
@@ -17,15 +17,19 @@
         <ul>
             {% for comment in comment_list%}
             <li>
-            <div class="vmaig-comment-tx">
-                {% if comment.user.img %}
-                <img src={{comment.user.img}} width="40"></img>
-                {%else%}
-                <img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40"></img>
-                {%endif%}
-            </div>
+            <!--<div class="vmaig-comment-tx">-->
+                <!--{% if comment.user.img %}-->
+                <!--<img src={{comment.user.img}} width="40"></img>-->
+                <!--{%else%}-->
+                <!--<img src="http://vmaig.qiniudn.com/image/tx/tx-default.jpg" width="40"></img>-->
+                <!--{%endif%}-->
+            <!--</div>-->
+                <!--<label class="label label-danger">-->
+                <!--<a><h4>{{comment.user.username}}</h4></a>-->
+                    <!--</label>-->
+                <div class="label label-primary">{{comment.user.username}}</div>
             <div class="vmaig-comment-content">
-                <a><h1>{{comment.user.username}}</h1></a>
+
                 <p>
                     评论：
                     {% autoescape on%}
