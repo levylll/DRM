@@ -76,7 +76,7 @@ class Article(models.Model):
     title = models.CharField(max_length=100,verbose_name=u'标题')
     en_title = models.CharField(max_length=100,verbose_name=u'英文标题',help_text=u'系统内部的唯一标示,非常重要,使用英文或者数字')
     # img = models.CharField(max_length=200,default='/static/img/article/default.jpg',null=True,blank=True,)
-    # file = models.FileField(upload_to = './upload/',null=True,blank=True)
+    # file = models.FileField( upload_to='./static/upload/',null=True,blank=True)
     tags = models.CharField(max_length=200,null=True,blank=True,verbose_name=u'标签',help_text=u'用逗号分隔')
     summary = models.TextField(verbose_name=u'摘要',null=True,blank=True,)
     content = models.TextField(verbose_name=u'内容',null=True,blank=True,)
